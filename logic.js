@@ -23,24 +23,23 @@ function changeturn() {
 function checkwin() {
     let boxtext = document.getElementsByClassName("boxtext")
     let wins = [
-        [0,1,2],
-        [3,4,5],
-        [6,7,8],
-        [0,3,6],
-        [1,4,7],
-        [2,5,8],
-        [0,4,8],
-        [2,4,6],
+        [0,1,2,0,5,0],
+        [3,4,5,0,15,0],
+        [6,7,8,0,25,0],
+        [0,3,6,-10.7,14.7,90],
+        [1,4,7,-0.7,14.7,90],
+        [2,5,8,9.4,14.5,90],
+        [0,4,8,-1,14.6,-135],
+        [2,4,6,-1,15,135]
     ]
     wins.forEach(e => {
         if(boxtext[e[0]].innerText === boxtext[e[1]].innerText && boxtext[e[1]].innerText === boxtext[e[2]].innerText && boxtext[e[0]].innerText !== "" ){
             document.getElementById("turn-info").innerText =  boxtext[e[0]].innerText + " Won !!!";
             isgameover = true;
             document.querySelector(".imgbox").getElementsByTagName("img")[0].style.width = "200px"
-            gameover.play()
-            // setTimeout(() => {
-            //     resetgame()
-            // }, 2000);
+            document.getElementsByClassName("cutline")[0].style.width = "600px"
+            document.getElementsByClassName("cutline")[0].style.transform = `translate(${e[3]}vw, ${e[4]}vw) rotate(${e[5]}deg)`
+            
         }
         
     })
@@ -61,6 +60,7 @@ function checkdraw() {
     if(text[0].innerText !== "" && text[2].innerText !== "" && text[3].innerText !== "" && text[4].innerText !== "" && text[5].innerText !== "" && text[6].innerText !== ""&& text[7].innerText !== ""&& text[8].innerText !== ""){
         document.getElementById("turn-info").innerText =  "It's  a  Draw.";
         isgameover = true;
+        gameover.play()
 
     }
        
@@ -80,6 +80,8 @@ reset.addEventListener("click",(e)=>{
     isgameover = false;
     document.getElementById("turn-info").innerText = "Turn for " + turn;
     document.querySelector(".imgbox").getElementsByTagName("img")[0].style.width = "0px"
+    document.getElementsByClassName("cutline")[0].style.width = "0px"
+    
     
     
 })
