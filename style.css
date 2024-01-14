@@ -133,3 +133,12 @@
         grid-template-rows: repeat(3, 20vw);
     }
   }
+.cutline{
+    height: 5px;
+    width: 0px;
+    position: absolute;
+    background-color: rgb(41, 137, 174);
+    /* transform: translate(15vw,-10.7vw); */
+    /* rotate: 90deg; */
+    /* transition: width 1s ease-in-out; */
+  }
