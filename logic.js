@@ -1,9 +1,9 @@
 console.log("Welcome to Tic Tac Toe");
 
 // Audios 
-let music = new Audio("music.mp3")
-let ting = new Audio("ting.mp3")
-let gameover = new Audio("gameover.mp3")
+let music = new Audio("assets/audio/music.mp3")
+let ting = new Audio("assets/audio/ting.mp3")
+let gameover = new Audio("assets/audio/gameover.mp3")
 let turn = "X"
 let isgameover = false;
 // Turn Change 
@@ -37,8 +37,12 @@ function checkwin() {
             document.getElementById("turn-info").innerText =  boxtext[e[0]].innerText + " Won !!!";
             isgameover = true;
             document.querySelector(".imgbox").getElementsByTagName("img")[0].style.width = "200px"
-            document.getElementsByClassName("cutline")[0].style.width = "600px"
-            document.getElementsByClassName("cutline")[0].style.transform = `translate(${e[3]}vw, ${e[4]}vw) rotate(${e[5]}deg)`
+            // document.getElementsByClassName("cutline")[0].style.width = "600px"
+            // document.getElementsByClassName("cutline")[0].style.transform = `translate(${e[3]}vw, ${e[4]}vw) rotate(${e[5]}deg)`
+            boxtext[e[0]].parentElement.style.backgroundColor = "rgb(174, 216, 232)"
+            boxtext[e[1]].parentElement.style.backgroundColor = "rgb(174, 216, 232)"
+            boxtext[e[2]].parentElement.style.backgroundColor = "rgb(174, 216, 232)"
+
             
         }
         
@@ -75,12 +79,17 @@ reset.addEventListener("click",(e)=>{
     let boxtexts = document.querySelectorAll(".boxtext");
     Array.from(boxtexts).forEach(element=>{
         element.innerText = "";
+        element.parentElement.style.backgroundColor = "white"
+        
+        
+
     })
     turn = "X"
     isgameover = false;
     document.getElementById("turn-info").innerText = "Turn for " + turn;
     document.querySelector(".imgbox").getElementsByTagName("img")[0].style.width = "0px"
-    document.getElementsByClassName("cutline")[0].style.width = "0px"
+    // document.getElementsByClassName("cutline")[0].style.width = "0px"
+    
     
     
     
